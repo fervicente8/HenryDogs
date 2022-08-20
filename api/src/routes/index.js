@@ -32,16 +32,12 @@ router.get('/dogs', async (req, res) => {
 router.get('/dogs/:id', async (req, res) => {
     const { id } = req.params
     let allDogs = await getAllDogs();
-
-    if(!id){
+    console.log(id);
+    if(id){
+        let dogById = await allDogs.filter(el => el.id === id)
+        dogById.length ? res.status(200).send(dogById) : res.status(404).send("Breed not found")  
+    } else {    
         res.status(400).send("Missing ID")
-    } else {
-        let dogById = await allDogs.find((el) => el.id === id)
-        if(dogById.length > 0){
-            res.status(200).send(dogById)
-        } else {
-            res.status(404).send("Breed not found")
-        }
     }
 })
 
