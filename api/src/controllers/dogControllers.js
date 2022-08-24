@@ -41,4 +41,17 @@ const getAllDogs = async () => {
     return allInfo;
 }
 
-module.exports = getAllDogs
+const getTemps = async () => {
+    const api = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)
+        const temperamentApiInfo = await api.data.map(el => el.temperament ? el.temperament : "Temperament not found").map(el => el.split(", ")).flat()
+        const temperament = [...new Set(temperamentApiInfo)]
+        temperament.forEach(el => {
+            Temperament.findOrCreate({
+                where: { name: el}
+            })
+        })
+        const allTemperaments = await Temperament.findAll()
+        return allTemperaments
+}
+
+module.exports = { getAllDogs, getTemps }

@@ -5,7 +5,8 @@ const { Dog, Temperament } = require('../db')
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
-const getAllDogs  = require('../controllers/dogControllers')
+const { getAllDogs, getTemps } = require('../controllers/dogControllers')
+
 
 const router = express();
 
@@ -32,9 +33,8 @@ router.get('/dogs', async (req, res) => {
 router.get('/dogs/:id', async (req, res) => {
     const { id } = req.params
     let allDogs = await getAllDogs();
-    console.log(id);
     if(id){
-        let dogById = await allDogs.filter(el => el.id === id)
+        let dogById = await allDogs.filter(el => el.id === parseInt(id))
         dogById.length ? res.status(200).send(dogById) : res.status(404).send("Breed not found")  
     } else {    
         res.status(400).send("Missing ID")
@@ -54,6 +54,7 @@ router.post('/dogs', async (req, res) => {
         createdInDb
     } = req.body;
 
+    
     const createDog = await Dog.create({
         name,
         min_weight,
@@ -66,27 +67,22 @@ router.post('/dogs', async (req, res) => {
     });
 
     const temperamentDb = await Temperament.findAll({
-        where: { name: temperament}
+        where: {name : temperament}
     })
+    
     createDog.addTemperament(temperamentDb)
     res.status(200).send("Dog created successfully")
-    
+     
 });
 
 router.get('/temperaments', async (req, res) => {
-    const api = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)
-
-    const temperamentApiInfo = await api.data.map(el => el.temperament ? el.temperament : "Temperament not found").map(el => el.split(", ")).flat()
-
-    const temperaments = [...new Set(temperamentApiInfo)]
-    temperaments.forEach(el => {
-        Temperament.findOrCreate({
-            where: { name: el}
-        })
-    })
-
-    const allTemperaments = await Temperament.findAll()
-    res.send(allTemperaments) 
+    try {
+        let allTemps = await getTemps()
+        res.send(allTemps)
+    }
+    catch (err) {
+        res.json({ error: err.message });
+    }
 })
 
 module.exports = router;
