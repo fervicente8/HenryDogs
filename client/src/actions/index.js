@@ -2,15 +2,15 @@ import axios from "axios"
 
 const url = "http://localhost:3001"
 
-export const getDogs = () => {
-    return async (dispatch) => {
+export const getDogs = () =>{
+    return async function (dispatch){
         const dogsBack = await axios.get(`${url}/dogs`)
         dispatch( {type: "GET_DOGS", payload: dogsBack.data} )
     }
 }
 
-export const getNameDogs = (name) => {
-    return async (dispatch) => {
+export const getNameDogs = (name) =>{
+    return async function (dispatch){
         try {
             const namesBack = await axios.get(`${url}/dogs?name=${name}`)
             return dispatch( {type: "GET_NAME_DOGS", payload: namesBack.data} )
@@ -21,7 +21,7 @@ export const getNameDogs = (name) => {
 }
 
 export const getDetail = (id) =>{
-    return async (dispatch) => {
+    return async function (dispatch){
         try{
             const detailsBack = await axios.get(`${url}/dogs/${id}`)
             dispatch( {type: "GET_DETAIL", payload: detailsBack.data} )
@@ -31,15 +31,15 @@ export const getDetail = (id) =>{
     }
 }
 
-export const getTemperaments = () => {
-    return async (dispatch) => {
+export const getTemperaments = () =>{
+    return async function (dispatch){
         const temperamentsBack = await axios.get(`${url}/temperaments`)
         dispatch( {type: "GET_TEMPERAMENTS", payload: temperamentsBack.data} )
     }
 }
 
-export const postDog = (payload) => {
-    return async () => {
+export const postDog = (payload) =>{
+        return async function (){  
         const post = await axios.post(`${url}/dogs`, payload)
         return post
     }
