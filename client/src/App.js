@@ -5,6 +5,7 @@ import Home from './views/Home';
 import CreateDog from './views/CreateDog';
 import Created from './views/Created';
 import DogDetails from './views/DogDetails';
+import PageNotFound from './views/PageNotFound';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/home/:id' component={DogDetails} />
           <Route exact path='/createdog' component={CreateDog} />
           <Route exact path='/createdsuccessfully' component={Created} />
+          <Route path="*" component={PageNotFound} />
         </Switch>  
       </div>
     </BrowserRouter>

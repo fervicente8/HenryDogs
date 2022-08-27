@@ -1,0 +1,34 @@
+.contenedor{
+    text-align: center; 
+    background-image: url("https://acegif.com/wp-content/uploads/funny-dog-75.gif");
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    padding: 20% 0 0 40%;
+}
+
+.contenedor .titulo{
+    text-transform: uppercase;
+    font-size: 70px;
+    color: #615145;
+    -webkit-text-stroke: 1px white;
+    margin-bottom: 30px;
+}
+
+.contenedor .boton{
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #54787d;
+    box-shadow: 0.3em 0.3em 0 0 #54787d, inset 0.3em 0.3em 0 0 #c6cca5;
+    color: #c6cca5;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-left: 40px;
+}
+
+.contenedor .boton:hover, .boton:focus{
+    box-shadow: 0 0 0 0 #c6cca5, inset 6em 3.5em 0 0 #54787d;
+    cursor: pointer;
+}
+

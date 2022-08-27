@@ -1,0 +1,195 @@
+.contenedor {
+    padding-top: 20px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    
+    background-image: url('https://i.pinimg.com/originals/8c/21/96/8c2196780eb48b18fcce2de130a213bb.gif');
+    background-repeat: no-repeat;
+}
+
+
+.formContenedor {
+    position: relative;
+    width: 1100px;
+    height: fit-content;
+    background-color: #e4e4e4bf;
+    padding: 30px;
+    border-radius: 40px;
+    border: #868686 1px solid;
+}
+
+.homeButton {
+    position: absolute;
+    font-size: 17px;
+    left: 0px;
+    top: 0;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    background-color: #54787d;
+    color: #c6cca5;
+    text-transform: uppercase;
+    border-radius: 35px 0 0 0;
+}
+
+.homeButton:hover{
+    background-color: #54787df3;
+    padding: 14px;
+}
+
+.formContenedor input {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.formContenedor input:focus{
+    outline: 1px solid #615145;
+}
+
+.formContenedor select {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.formContenedor select:focus {
+    outline: 1px solid #615145;
+}
+
+.formContenedor .error{
+    font-size: 14px;
+    color: red;
+    text-align: center;
+}
+
+.formContenedor h1 {
+    text-transform: uppercase;
+    color: #615145;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.formContenedor h4{
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 7px;
+}
+
+.medidas {
+    justify-content: center;
+    display: flex;
+}
+
+.medidas p{
+    color: #54787d;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.formName {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #615145;
+    border-bottom: 1px dotted black;
+}
+
+.division{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    border-bottom: 1px dotted black;
+}
+
+.formWeightHeight{
+    text-align: center;
+    width: 50%;
+    padding: 20px;
+    max-width: 50%;
+}
+
+.formWeightHeight label{
+    margin: 0 10px;
+}
+
+.formWeightHeight input{
+    width: 60px;
+}
+
+.formLifeSpan {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px dotted black;
+}
+
+.formLifeSpan input{
+    width: 60px;
+}
+
+.formTemps{
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px dotted black;
+}
+
+.formTemps select {
+    margin-bottom: 10px;
+}
+
+.formTemps .listadoTemps{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.formTemps .listadoTemps li {
+    list-style: none;
+    font-size: 12px;
+    color: white;
+    margin: 0 5px 5px ;
+    padding: 10px;
+    text-align: center;
+    background-color: #54787d;
+    border-radius: 15px;
+}
+
+.formTemps .listadoTemps li:hover {
+    background-color: rgb(201, 90, 90);
+    cursor: pointer;
+}
+
+.warnings{
+    color: #54787d;
+    font-size: 13px;
+}
+
+.formImage{
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #615145;;
+}
+
+.formImage input {
+    margin-bottom: 20px;
+}
+
+.formButton {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.formButton button {
+    text-transform: uppercase;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.formButton button:hover{
+    background-color: rgba(255, 255, 255, 0.916);
+    cursor: pointer;
+}

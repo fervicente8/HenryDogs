@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Pages.css"
+import styles from "./Pages.module.css"
 
 const Pages = ({dogsPerPage, allDogs, pages}) => {
     const pageNumbers = []
@@ -10,11 +10,11 @@ const Pages = ({dogsPerPage, allDogs, pages}) => {
 
   return (
     <nav>
-        <ul className='pages'>
+        <ul className={styles.paginado}>
         {
             pageNumbers?.map(num => {
                 return (
-                <li className='number' key={num}>
+                <li key={num}>
                     <a onClick={() => pages(num)}>{num}</a>
                 </li>
                 )

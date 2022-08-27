@@ -1,0 +1,96 @@
+.contenedorTotal {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  min-height: 90px;
+  padding: 20px 80px;
+  background-color: white;
+}
+
+.contenedorTotal .titulo {
+  color: #c6cca5;
+  text-transform: uppercase;
+  cursor: default;
+}
+
+.contenedorTotal .busqueda {
+  position: relative;
+  border: 1px solid black;
+  display: flex;
+}
+
+.contenedorTotal .busqueda input {
+  padding: 10px;
+  width: 400px;
+  border: none;
+  border-radius: 2px;
+  outline: 0px solid #615145;
+}
+
+.contenedorTotal .busqueda input:focus {
+  outline: 2px solid #a8998d;
+}
+
+.contenedorTotal .busqueda button {
+  background-color: #8ab8a8;
+  width: 10%;
+  color: white;
+  padding: 9px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 2px 0px 0px 2px;
+}
+
+.contenedorCrear {
+  width: 130px;
+}
+
+.contenedorTotal .crearPerro {
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: #c6cca5;
+  color: black;
+  border-radius: 5px;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.contenedorTotal .crearPerro:hover {
+  background-color: #c6cca5ea;
+  padding: 12px;
+}
+
+.contenedorBusqueda{
+  position: relative;
+}
+
+.contenedorPosibles{
+  position: absolute;
+  width: 100%;
+}
+
+.posible{
+  color: rgb(255, 255, 255);
+  border: black 1px solid;
+  background-color: #8ab8a8;
+  justify-content: start;
+  text-transform: uppercase;
+  align-items: center;
+  display: flex;
+  padding: 10px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.contenedorPosibles img {
+  margin-right: 10px;
+  width: 8%;
+  height: 30px;
+  border-radius: 18px;
+  border: 2px solid #54787d;
+}
