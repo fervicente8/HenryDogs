@@ -27,16 +27,23 @@
 }
 
 .container .fotoPerro {
-  width: 350px;
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
   position: absolute;
-  border-radius: 200px;
-  left: calc(50% - 350px / 2);
-  top: -125px;
+  border-radius: 10px;
+  left: calc(50% - 400px / 2);
+  top: -150px;
+  border: 2px solid black;
 }
 
 .contenedorInfo {
   padding: 0 50px 10px;
-  margin-top: 120px;
+  margin-top: 170px;
+}
+
+.contenedorInfo h4 {
+  margin-bottom: 5px;
 }
 
 .contenedorInfo .nombrePerro {
@@ -94,3 +101,4 @@
 .botonVolver button:hover {
     background-color: #8ab8a8dd;
 }
+

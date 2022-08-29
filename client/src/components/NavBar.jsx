@@ -9,7 +9,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const allDogs = useSelector((state) => state.allDogs);
-
+  
   useEffect(() => {
     dispatch(getDogs());
   }, []);
@@ -51,7 +51,8 @@ const NavBar = () => {
                 </Link>
               );
             }
-          })}
+          })
+        }
         </div>
       </div>
       <div className={styles.contenedorCrear}>

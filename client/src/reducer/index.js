@@ -44,15 +44,14 @@ export default function rootReducer(state = initialState, action) {
         action.payload === "all"
           ? allDogsTemp
           : allDogsTemp.filter((el) => {
-              if (typeof el.temperament === "string")
-                return el.temperament.includes(action.payload);
-              if (Array.isArray(el.temperament)) {
+              if (Array.isArray(el.temperaments) && !el.temperament) {
                 const temp = el.temperaments.map((te) => te.name);
                 if (temp.includes(action.payload)) {
                   return el;
                 }
-                return;
               }
+              if (typeof el.temperament === "string" && !el.temperaments)
+                return el.temperament.includes(action.payload);
             });
       return {
         ...state,
@@ -99,25 +98,25 @@ export default function rootReducer(state = initialState, action) {
 
     case "ORDER_BY_WEIGHT":
       const sortedDogsByWeight =
-      action.payload === "asc"
-      ? state.dogs.sort(function (a, b) {
-        if (parseInt(a.min_weight) > parseInt(b.min_weight)) {
-          return 1;
-        }
-        if (parseInt(b.min_weight) > parseInt(a.min_weight)) {
-          return -1;
-        }
-        return 0;
-      })
-      : state.dogs.sort(function (a, b) {
-        if (parseInt(a.max_weight) > parseInt(b.max_weight)) {
-          return -1;
-        }
-        if (parseInt(b.max_weight) > parseInt(a.max_weight)) {
-          return 1;
-        }
-        return 0;
-      });
+        action.payload === "asc"
+          ? state.dogs.sort(function (a, b) {
+              if (parseInt(a.min_weight) > parseInt(b.min_weight)) {
+                return 1;
+              }
+              if (parseInt(b.min_weight) > parseInt(a.min_weight)) {
+                return -1;
+              }
+              return 0;
+            })
+          : state.dogs.sort(function (a, b) {
+              if (parseInt(a.max_weight) > parseInt(b.max_weight)) {
+                return -1;
+              }
+              if (parseInt(b.max_weight) > parseInt(a.max_weight)) {
+                return 1;
+              }
+              return 0;
+            });
       return {
         ...state,
         dogs: sortedDogsByWeight,

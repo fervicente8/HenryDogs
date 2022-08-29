@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import styles from "./Loading.module.css";
 
 const Loading = () => {
@@ -12,6 +13,9 @@ const Loading = () => {
           <div></div>
           <div></div>
         </div>
+        <Link to="/home">
+          <p>Something is wrong? Click here</p>
+        </Link>
       </div>
     </div>
   );

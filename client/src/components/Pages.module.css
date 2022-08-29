@@ -5,20 +5,27 @@
     list-style: none;
 }
 
-.paginado li {
+.paginado button {
     font-size: 14px;
-    background-color: #615145;
-    color: white;
+    background-color: #ffffff;
+    color: #8ab8a8;
     width: 25px;
     text-align: center;
     padding: 2px;
-    margin-right: 5px;
-    border: 1px solid #000000;
+    margin-right: 6px;
+    border: 1px solid #8ab8a8;
     border-radius: 2px;
 }
 
-.paginado li:hover{
+.paginado button:hover{
     cursor: pointer;
+    color: #ffffff;
     background-color: #8ab8a8;
+    border: 1px solid #ffffff;
 }
 
+.paginado button:focus{
+    color: #ffffff;
+    background-color: #8ab8a8;
+    border: 1px solid #ffffff;
+}

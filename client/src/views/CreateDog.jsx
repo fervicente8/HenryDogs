@@ -36,7 +36,7 @@ const CreateDog = () => {
     const errors = { state: true };
     const onlyWords = new RegExp(/^[a-zA-Z\s]*$/g);
     const onlyNumbers = new RegExp(/^[-+]?[0-9]+$/);
-    const imageUrl = new RegExp(/\.(jpg|jpeg|png|webp|avif|gif|svg)$/)
+    const imageUrl = new RegExp(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi)
     const repeat = allDogs.filter((el) => el.name.toLowerCase() === input.name.toLowerCase());
 
     if (!input.name) {
@@ -127,6 +127,7 @@ const CreateDog = () => {
         "https://res.cloudinary.com/postedin/image/upload/d_mascotas:no-image.jpg,f_auto,q_80/mascotas/c-postedin-image-50106.jpeg";
     } else if (imageUrl.test(input.image) === false){
       errors.image = "Enter a valid url, it must end with an image format"
+      errors.state = false;
     }
     return errors;
   };
@@ -179,7 +180,12 @@ const CreateDog = () => {
         temperament: [],
         image: "",
       });
-      history.push("/createdsuccessfully");
+      const createdVertificator = allDogs.filter((el) => el.name.toLowerCase() === input.name.toLowerCase());
+      if(createdVertificator){
+        history.push("/createdsuccessfully");
+      } else {
+        history.push('/notcreated')
+      }     
     }
   }
 

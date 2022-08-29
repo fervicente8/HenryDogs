@@ -5,8 +5,10 @@
   align-items: center;
   width: 100%;
   min-height: 90px;
-  padding: 20px 80px;
-  background-color: white;
+  padding: 0 80px;
+  background-color: transparent;
+  margin-top: -25px;
+  margin-bottom: 30px;
 }
 
 .contenedorTotal .titulo {

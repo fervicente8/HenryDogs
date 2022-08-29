@@ -1,8 +1,8 @@
-.contenedorTotal{
+.contenedorTotal {
   height: 100vh;
 }
 
-.contenedor { 
+.contenedor {
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -10,14 +10,14 @@
   align-items: center;
 }
 
-.gif{
+.gif {
   background-image: url("https://bestanimations.com/media/dogs/933376179dalmation-illustration-gif.gif");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
   width: 700px;
   height: 350px;
-  border-bottom: 2px #615145 solid; 
+  border-bottom: 2px #615145 solid;
   margin-top: 100px;
   margin-bottom: 100px;
 }
@@ -57,4 +57,9 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.contenedor p {
+  margin-top: 200px;
+  color: black;
 }

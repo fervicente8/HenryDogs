@@ -7,7 +7,7 @@ import styles from "./DogDetails.module.css";
 
 const DogDetails = (e) => {
   const dispatch = useDispatch();
-  const [loaded, setLoaded] = useState();
+  const [loaded, setLoaded] = useState(false);
   const dogDetails = useSelector((state) => state.details);
 
   useEffect(() => {
@@ -55,8 +55,8 @@ const DogDetails = (e) => {
               </div>
             </div>
             <div className={styles.contenedorLifeSpan}>
-              <h4>Life span:</h4>
-              <p>{dogDetails[0].life_span}</p>
+              <h4>Life span</h4>
+              <p>{dogDetails[0].life_span} years</p>
             </div>
             <div className={styles.contenedorTemperament}>
               <h4>Temperament</h4>
