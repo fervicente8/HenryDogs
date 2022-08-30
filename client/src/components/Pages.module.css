@@ -1,11 +1,25 @@
 .paginado {
     margin: auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    width: 140px;
     list-style: none;
 }
 
-.paginado button {
+.paginado li {
+    font-size: 14px;
+    cursor: default;
+    background-color: #ffffff;
+    color: #8ab8a8;
+    width: 25px;
+    text-align: center;
+    padding: 2px;
+    margin-right: 6px;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px;
+}
+
+.paginado button{
     font-size: 14px;
     background-color: #ffffff;
     color: #8ab8a8;
@@ -21,11 +35,4 @@
     cursor: pointer;
     color: #ffffff;
     background-color: #8ab8a8;
-    border: 1px solid #ffffff;
-}
-
-.paginado button:focus{
-    color: #ffffff;
-    background-color: #8ab8a8;
-    border: 1px solid #ffffff;
 }

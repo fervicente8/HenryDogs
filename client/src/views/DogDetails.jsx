@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail, cleanDetail } from "../actions/index";
+import { getDetail, cleanDetail } from "../redux/actions";
 import Loading from "./Loading";
 import styles from "./DogDetails.module.css";
 
@@ -56,7 +56,7 @@ const DogDetails = (e) => {
             </div>
             <div className={styles.contenedorLifeSpan}>
               <h4>Life span</h4>
-              <p>{dogDetails[0].life_span} years</p>
+              <p>{dogDetails[0].life_span}</p>
             </div>
             <div className={styles.contenedorTemperament}>
               <h4>Temperament</h4>

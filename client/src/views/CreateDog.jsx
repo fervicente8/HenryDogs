@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { postDog, getTemperaments, getDogs } from "../actions/index";
+import { postDog, getTemperaments, getDogs } from "../redux/actions";
 import Loading from "./Loading";
 import styles from "./CreateDog.module.css";
 
@@ -176,7 +176,7 @@ const CreateDog = () => {
         max_weight: "",
         min_height: "",
         max_height: "",
-        life_span: "" + "years",
+        life_span: "",
         temperament: [],
         image: "",
       });

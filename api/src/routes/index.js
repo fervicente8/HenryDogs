@@ -64,7 +64,7 @@ router.post("/dogs", async (req, res) => {
     max_weight,
     min_height,
     max_height,
-    life_span,
+    life_span: life_span + " years",
     image,
     createdInDb,
   });

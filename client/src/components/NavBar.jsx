@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getDogs, getNameDogs } from "../actions";
+import { getDogs, getNameDogs } from "../redux/actions";
 import styles from "./NavBar.module.css";
 
 const NavBar = () => {

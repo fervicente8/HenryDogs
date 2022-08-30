@@ -1,22 +1,16 @@
 import React from "react";
 import styles from "./Pages.module.css";
 
-const Pages = ({ dogsPerPage, allDogs, pages }) => {
-  const pageNumbers = [];
-
-  for (let i = 1; i <= Math.ceil(allDogs / dogsPerPage); i++) {
-    pageNumbers.push(i);
-  }
-
+const Pages = ({ previousPage, nextPage, currentPage, firstPage, lastPage }) => {
   return (
     <nav>
-      <div className={styles.paginado}>
-        {pageNumbers?.map((num) => {
-          return (
-              <button key={num} onClick={() => pages(num)}>{num}</button>
-          );
-        })}
-      </div>
+      <ul className={styles.paginado}>
+        <button onClick={() => firstPage()}>🢀</button>
+        <button onClick={() => previousPage()}>🡨</button>
+        <li>{currentPage}</li>
+        <button onClick={() => nextPage()}>🡪</button>
+        <button onClick={() => lastPage()}>🢂</button>
+      </ul>
     </nav>
   );
 };

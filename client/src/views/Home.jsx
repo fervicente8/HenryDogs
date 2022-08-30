@@ -9,7 +9,7 @@ import {
   filterDogByCreated,
   orderByName,
   orderByWeight,
-} from "../actions";
+} from "../redux/actions";
 import NavBar from "../components/NavBar";
 import Card from "../components/Card";
 import Pages from "../components/Pages";
@@ -23,20 +23,17 @@ const Home = () => {
   const [loaded, setLoaded] = useState();
   const [orden, setOrden] = useState();
   const [selected, setSelected] = useState({
-    temperament : '',
-    created: '',
-    name : '',
-    weight : ''
-  })
+    temperament: "",
+    created: "",
+    name: "",
+    weight: "",
+  });
   const [currentPage, setCurrentPage] = useState(1);
   const dogsPerPage = 8;
   const lastDog = currentPage * dogsPerPage;
   const firstDog = lastDog - dogsPerPage;
   const currentDogs = allDogs.slice(firstDog, lastDog);
-
-  const pages = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  const pageNumbers = Math.ceil(allDogs.length / dogsPerPage);
 
   useEffect(() => {
     dispatch(getDogs());
@@ -44,30 +41,50 @@ const Home = () => {
     setLoaded(true);
   }, [dispatch]);
 
+  function nextPage() {
+    if (currentPage < pageNumbers) {
+      setCurrentPage(currentPage + 1);
+    }
+  }
+
+  function previousPage() {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+
+  function lastPage() {
+      setCurrentPage(pageNumbers);
+  }
+
+  function firstPage() {
+      setCurrentPage(1);
+  }
+
   async function handleRestart(e) {
     e.preventDefault();
     await dispatch(getDogs());
     setCurrentPage(1);
     setSelected({
-      temperament : '',
-      created: '',
-      name : '',
-      weight : ''
-    })
+      temperament: "",
+      created: "",
+      name: "",
+      weight: "",
+    });
   }
 
   function handleFilterTemperament(e) {
     e.preventDefault();
     dispatch(filterDogByTemperaments(e.target.value));
     setCurrentPage(1);
-    setSelected({temperament: e.target.value})
+    setSelected({ temperament: e.target.value });
   }
 
   function handleFilterCreated(e) {
     e.preventDefault();
     dispatch(filterDogByCreated(e.target.value));
     setCurrentPage(1);
-    setSelected({created: e.target.value})
+    setSelected({ created: e.target.value });
   }
 
   function handleSortByName(e) {
@@ -75,7 +92,7 @@ const Home = () => {
     dispatch(orderByName(e.target.value));
     setOrden(e.target.value);
     setCurrentPage(1);
-    setSelected({name: e.target.value})
+    setSelected({ name: e.target.value });
   }
 
   function handleSortByWeight(e) {
@@ -83,7 +100,7 @@ const Home = () => {
     dispatch(orderByWeight(e.target.value));
     setOrden(e.target.value);
     setCurrentPage(1);
-    setSelected({weight: e.target.value})
+    setSelected({ weight: e.target.value });
   }
 
   function tempsToString(index) {
@@ -97,7 +114,7 @@ const Home = () => {
   if (allDogs[0] && allTemperaments[0] && loaded) {
     return (
       <div>
-        
+        <NavBar></NavBar>
         <div className={styles.resYFiltros}>
           <button
             className={styles.reiniciarPerros}
@@ -105,14 +122,17 @@ const Home = () => {
               handleRestart(e);
             }}
           >
-            Restart dogs
+            Restart filters
           </button>
           <div className={styles.filtradosContenedor}>
             <div className={styles.filterBy}>
               <div className={styles.filtros}>
                 <div>
                   <p>Temperament</p>
-                  <select value={selected.temperament} onChange={(e) => handleFilterTemperament(e)}>
+                  <select
+                    value={selected.temperament}
+                    onChange={(e) => handleFilterTemperament(e)}
+                  >
                     <option value="all">All</option>
                     {allTemperaments?.map((temp) => {
                       return <option value={temp.name}>{temp.name}</option>;
@@ -121,7 +141,10 @@ const Home = () => {
                 </div>
                 <div>
                   <p>Created</p>
-                  <select value={selected.created} onChange={(e) => handleFilterCreated(e)}>
+                  <select
+                    value={selected.created}
+                    onChange={(e) => handleFilterCreated(e)}
+                  >
                     <option value="all">All</option>
                     <option value="created">Created</option>
                     <option value="not-created">Not created</option>
@@ -129,20 +152,24 @@ const Home = () => {
                 </div>
               </div>
             </div>
-
             <div className={styles.orderBy}>
               <div>
                 <h4>Order by name</h4>
-                <select value={selected.name} onChange={(e) => handleSortByName(e)}>
+                <select
+                  value={selected.name}
+                  onChange={(e) => handleSortByName(e)}
+                >
                   <option value="default" selected hidden></option>
                   <option value="asc">A - Z</option>
                   <option value="desc">Z - A</option>
                 </select>
               </div>
-
               <div>
                 <h4>Order by weight</h4>
-                <select value={selected.weight} onChange={(e) => handleSortByWeight(e)}>
+                <select
+                  value={selected.weight}
+                  onChange={(e) => handleSortByWeight(e)}
+                >
                   <option value="default" selected hidden></option>
                   <option value="asc">Asc</option>
                   <option value="desc">Desc</option>
@@ -152,11 +179,12 @@ const Home = () => {
           </div>
         </div>
         <div className={styles.paginado}>
-        <NavBar></NavBar>
           <Pages
-            dogsPerPage={dogsPerPage}
-            allDogs={allDogs.length}
-            pages={pages}
+            previousPage={previousPage}
+            nextPage={nextPage}
+            currentPage={currentPage}
+            firstPage={firstPage}
+            lastPage={lastPage}
           />
           <div className={styles.paginaPerros}>
             {!currentDogs ? (
