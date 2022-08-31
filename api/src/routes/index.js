@@ -4,6 +4,7 @@ const { Dog, Temperament } = require("../db");
 // Ejemplo: const authRouter = require('./auth.js');
 
 const { getAllDogs, getTemps } = require("../controllers/dogControllers");
+const { default: axios } = require("axios");
 
 const router = express();
 
@@ -13,6 +14,18 @@ const router = express();
 router.get("/dogs", async (req, res) => {
   const breed = req.query.name;
   let allDogs = await getAllDogs();
+
+  // if (breed) {
+  //   let dogBreed = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${breed}`)
+  //   console.log(dogBreed.data);
+  //   if (dogBreed.data.length > 0) {
+  //     res.status(200).send(dogBreed.data);
+  //   } else {
+  //     res.status(404).send("Dog not found");
+  //   }
+  // } else {
+  //   res.status(200).send(allDogs);
+  // }
 
   if (breed) {
     let dogBreed = await allDogs.filter((el) =>
@@ -58,23 +71,28 @@ router.post("/dogs", async (req, res) => {
     createdInDb,
   } = req.body;
 
-  const createDog = await Dog.create({
-    name,
-    min_weight,
-    max_weight,
-    min_height,
-    max_height,
-    life_span: life_span + " years",
-    image,
-    createdInDb,
-  });
+  
+  try {
+    const createDog = await Dog.create({
+      name,
+      min_weight,
+      max_weight,
+      min_height,
+      max_height,
+      life_span: life_span + " years",
+      image,
+      createdInDb,
+    });
 
-  const temperamentDb = await Temperament.findAll({
-    where: { name: temperament },
-  });
+    const temperamentDb = await Temperament.findAll({
+      where: { name: temperament },
+    });
 
-  createDog.addTemperament(temperamentDb);
-  res.status(200).send("Dog created successfully");
+    createDog.addTemperament(temperamentDb);
+    res.status(200).send("Dog created successfully");
+  } catch (err) {
+    res.json({ error: err.message });
+  }
 });
 
 router.get("/temperaments", async (req, res) => {
