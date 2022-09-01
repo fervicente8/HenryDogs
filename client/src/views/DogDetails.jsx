@@ -15,7 +15,7 @@ const DogDetails = (e) => {
     setLoaded(true);
     dispatch(cleanDetail());
   }, []);
-
+  console.log(DogDetails[0]);
   function tempsToString(index) {
     const temps = [];
     for (let i = 0; i < index.length; i++) {
@@ -67,6 +67,13 @@ const DogDetails = (e) => {
               )}
             </div>
           </div>
+          {dogDetails[0].origen ? (
+            <div>
+              <h4>Origen</h4>
+              <p>{dogDetails[0].origen}</p>
+            </div>
+          ) : null}
+
           <div className={styles.botonVolver}>
             <Link to="/home">
               <button>Go back</button>

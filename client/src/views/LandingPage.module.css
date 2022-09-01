@@ -1,10 +1,11 @@
 .contenedor{
     text-align: center; 
     background-image: url("https://acegif.com/wp-content/uploads/gif/smiling-dog-14.gif");
-    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
     width: 100vw;
-    padding: 28% 0 0 45%;
+    padding: 28% 0 0 60%;
 }
 
 .contenedor .titulo{

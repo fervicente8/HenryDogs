@@ -28,6 +28,7 @@ const CreateDog = () => {
     life_span: "",
     temperament: [],
     image: "",
+    origen: ""
   });
 
   const [errors, setErrors] = useState({});
@@ -157,7 +158,7 @@ const CreateDog = () => {
       })
     );
   }
-
+console.log(input);
   function removeTemp(el) {
     setInput({
       ...input,
@@ -179,6 +180,7 @@ const CreateDog = () => {
         life_span: "",
         temperament: [],
         image: "",
+        origen: ""
       });
       const createdVertificator = allDogs.filter((el) => el.name.toLowerCase() === input.name.toLowerCase());
       if(createdVertificator){
@@ -330,6 +332,10 @@ const CreateDog = () => {
                   *If you don't upload an image, a random one will be uploaded*
                 </p>
               </div>
+            </div>
+            <div>
+              <h4>Origen</h4>
+              <input type="text" value={input.origen} name='origen' onChange={handleChange}/>
             </div>
             <div className={styles.formButton}>
               <button type="submit">Create 🐶</button>

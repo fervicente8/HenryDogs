@@ -15,6 +15,7 @@ import Card from "../components/Card";
 import Pages from "../components/Pages";
 import Loading from "./Loading";
 import styles from "./Home.module.css";
+import CreateADog from "../components/CreateADog";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -111,7 +112,7 @@ const Home = () => {
     return temps.toString().slice(1, undefined);
   }
 
-  if (allDogs[0] && allTemperaments[0] && loaded) {
+   if (allTemperaments[0] && loaded) {
     return (
       <div>
         <NavBar></NavBar>
@@ -187,8 +188,8 @@ const Home = () => {
             lastPage={lastPage}
           />
           <div className={styles.paginaPerros}>
-            {!currentDogs ? (
-              <p>No breeds to show</p>
+            {currentDogs.length === 0 ? (
+              <CreateADog />
             ) : (
               currentDogs.map((el) => {
                 if (el.createdInDb) {

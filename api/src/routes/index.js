@@ -69,6 +69,7 @@ router.post("/dogs", async (req, res) => {
     temperament,
     image,
     createdInDb,
+    origen
   } = req.body;
 
   
@@ -82,6 +83,7 @@ router.post("/dogs", async (req, res) => {
       life_span: life_span + " years",
       image,
       createdInDb,
+      origen
     });
 
     const temperamentDb = await Temperament.findAll({
